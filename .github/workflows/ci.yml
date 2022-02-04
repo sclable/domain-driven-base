@@ -41,4 +41,4 @@ jobs:
     - name: Publish to GitHub Packages Apache Maven
       run: mvn --batch-mode deploy
       env:
-        GITHUB_TOKEN: ${{ secrets.GIT_PUSH_TOKEN }}
+        GITHUB_TOKEN: ${{ github.token }}
