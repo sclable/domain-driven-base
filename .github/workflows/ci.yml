@@ -45,14 +45,9 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: package
-        path: target/package.jar
+        path: target
 
     - name: Publish to GitHub Packages Apache Maven
-      run: >
-        mvn -B deploy:deploy-file
-        -Dfile=target/package.jar
-        -DrepositoryId=github
-        -Durl=https://maven.pkg.github.com/sclable/domain-driven-base
-        -DpomFile=pom.xml
+      run: mvn -B deploy:deploy
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
