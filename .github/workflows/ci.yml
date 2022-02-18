@@ -30,6 +30,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
       with:
+        repository: ${{github.repository}}
         token: ${{ secrets.GIT_PUSH_TOKEN }}
     - name: Configure CI user
       run: |
