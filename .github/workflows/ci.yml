@@ -52,5 +52,5 @@ jobs:
       run: |
         mvn javadoc:javadoc
         git add docs
-        git commit -am "docs(javadoc): update documentation"
+        git commit -a -m "Update documentation" -m "[skip ci]"
         git push origin master
