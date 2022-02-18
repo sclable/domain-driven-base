@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"com.sclable.domain"},{"l":"com.sclable.domain.exception"}]
