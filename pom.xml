@@ -7,38 +7,18 @@
   <groupId>com.sclable</groupId>
   <artifactId>domain-driven-base</artifactId>
   <version>0.1.0-SNAPSHOT</version>
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>11</source>
-          <target>11</target>
-        </configuration>
-      </plugin>
-        <plugin>
-          <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.22.2</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-javadoc-plugin</artifactId>
-          <version>3.3.2</version>
-          <configuration>
-            <destDir>docs</destDir>
-            <reportOutputDirectory>docs</reportOutputDirectory>
-            <tags>
-              <tag>
-                <name>example</name>
-                <placement>a</placement>
-                <head>Example</head>
-              </tag>
-            </tags>
-          </configuration>
-        </plugin>
-    </plugins>
-  </build>
+
+  <properties>
+    <version.java>11</version.java>
+    <version.maven.compiler>3.10.0</version.maven.compiler>
+    <version.maven.surefire>3.0.0-M5</version.maven.surefire>
+    <version.maven.javadoc>3.3.2</version.maven.javadoc>
+    <version.jakarta.validation.api>3.0.1</version.jakarta.validation.api>
+    <version.apache.commons.lang3>3.12.0</version.apache.commons.lang3>
+    <version.lombok>1.18.22</version.lombok>
+    <version.junit>5.8.2</version.junit>
+  </properties>
+
   <distributionManagement>
     <repository>
       <id>github</id>
@@ -46,38 +26,74 @@
       <url>https://maven.pkg.github.com/sclable/domain-driven-base</url>
     </repository>
   </distributionManagement>
+
   <dependencyManagement>
     <dependencies>
       <dependency>
         <groupId>org.junit</groupId>
         <artifactId>junit-bom</artifactId>
-        <version>5.8.2</version>
-        <scope>import</scope>
+        <version>${version.junit}</version>
         <type>pom</type>
+        <scope>import</scope>
       </dependency>
     </dependencies>
   </dependencyManagement>
+
   <dependencies>
     <dependency>
       <groupId>jakarta.validation</groupId>
       <artifactId>jakarta.validation-api</artifactId>
-      <version>3.0.1</version>
+      <version>${version.jakarta.validation.api}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
-      <version>3.12.0</version>
+      <version>${version.apache.commons.lang3}</version>
     </dependency>
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
-      <version>1.18.22</version>
+      <version>${version.lombok}</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter</artifactId>
-      <scope>provided</scope>
+      <scope>test</scope>
     </dependency>
   </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${version.maven.compiler}</version>
+        <configuration>
+          <release>${version.java}</release>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>${version.maven.surefire}</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>${version.maven.javadoc}</version>
+        <configuration>
+          <destDir>docs</destDir>
+          <reportOutputDirectory>docs</reportOutputDirectory>
+          <tags>
+            <tag>
+              <name>example</name>
+              <placement>a</placement>
+              <head>Example</head>
+            </tag>
+          </tags>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>
