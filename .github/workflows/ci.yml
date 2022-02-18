@@ -38,16 +38,16 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
+        cache: maven
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
-        # settings-path: ${{ github.workspace }} # location for the settings.xml file
 
     - name: Download package
       uses: actions/download-artifact@v2
       with:
         name: package
-        path: target
+        path: target/package.jar
 
     - name: Publish to GitHub Packages Apache Maven
-      run: mvn -B deploy:deploy-file -Dfile=target/package -DrepositoryId=github -Durl=https://maven.pkg.github.com/sclable/domain-driven-base
+      run: mvn -B deploy:deploy-file -Dfile=target/package.jar -DrepositoryId=github -Durl=https://maven.pkg.github.com/sclable/domain-driven-base
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
