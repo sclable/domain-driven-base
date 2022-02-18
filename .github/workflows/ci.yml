@@ -48,6 +48,6 @@ jobs:
         path: target
 
     - name: Publish to GitHub Packages Apache Maven
-      run: mvn -B deploy:deploy-file -Dfile=target/package
+      run: mvn -B deploy:deploy-file -Dfile=target/package -DrepositoryId=github -Durl=https://maven.pkg.github.com/sclable/domain-driven-base
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
